@@ -1,0 +1,41 @@
+body {
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+/* shiki style */
+.code-wrapper {
+  position: relative;
+  margin: 16px 0;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  color: rgba(240, 248, 255, 0.518);
+  border-radius: 6px;
+  padding: 4px 2px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  font-size: 4px;
+}
+
+.copy-btn:hover {
+  background: #91919162;
+}
+
+.code-wrapper pre {
+  margin: 0;
+  padding: 16px;
+  padding-right: 72px;
+
+  overflow-x: auto;
+  white-space: pre;
+}

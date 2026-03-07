@@ -1,9 +1,28 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>라이브러리 테스트</title>
+
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+</head>
+
+<body>
+  <h2>아이콘 테스트</h2>
+  <i data-lucide="copy"></i>
+  <i data-lucide="check"></i>
+  <i data-lucide="git-branch"></i>
+  <i data-lucide="terminal"></i>
+
+  <h2 style="margin-top: 24px">Shiki 코드블럭 테스트</h2>
+  <section>
+    <div id="code-container"></div>
+  </section>
+
+  <script type="module" src="./scripts/codeblock.js"></script>
+</body>
+
 </html>
