@@ -1,14 +1,14 @@
-import { CodeBlock } from "./codeblock.js";
 import { GUIDE_DATA } from "../data/guide.js";
+import { Card } from "./Card.js";
 
 async function render() {
-  for (const guide of GUIDE_DATA) {
-    const { lang, codes } = guide;
+  const container = document.getElementById("card-container");
 
-    const renderCode = codes.join("\n");
-    const block = await CodeBlock.create({ code: renderCode, lang });
-    document.getElementById("card-container").appendChild(block);
+  for (const guide of GUIDE_DATA) {
+    const card = await Card.create(guide);
+    container.appendChild(card);
   }
+
   lucide.createIcons();
 }
 
