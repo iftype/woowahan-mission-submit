@@ -4,23 +4,63 @@
   --color-dot-green: #28c840;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  padding: 0 10px 0 10px;
+  background: #0f172a;
+  color: #e2e8f0;
 }
 
-/*  image */
-.window-body img {
-  width: 100%;
-  height: auto;
-  display: block;
+/* 커스텀 스크롤바 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 10px;
 }
 
-/* shiki style */
+/* Card */
+.card {
+  min-height: 70vh;
+  padding: 48px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.card-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #f1f5f9;
+}
+
+.card-desc {
+  font-size: 14px;
+  color: #94a3b8;
+  line-height: 1.7;
+}
+
+/* shiki 코드블럭 */
 .code-wrapper {
   position: relative;
-  margin: 16px 0;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.code-wrapper pre {
+  margin: 0;
+  padding: 16px;
+  padding-right: 52px;
+  overflow-x: auto;
+  white-space: pre;
 }
 
 .copy-btn {
@@ -28,42 +68,55 @@ body {
   top: 6px;
   right: 6px;
   border: none;
-  background-color: rgba(0, 0, 0, 0);
-  color: rgba(240, 248, 255, 0.518);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.4);
   border-radius: 6px;
-  padding: 4px 2px;
+  padding: 4px;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 2px;
-  font-size: 4px;
 }
 
 .copy-btn:hover {
-  background: #91919162;
+  background: rgba(255, 255, 255, 0.1);
+}
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
 }
 
-.code-wrapper pre {
-  margin: 0;
-  padding: 16px;
-  padding-right: 72px;
-
-  overflow-x: auto;
-  white-space: pre;
-}
-
-/* Card */
-.card-content {
-  background-color: #c2e6c7;
-  border-top: 1px solid var(--color-border);
+/* 맥 창 */
+.mac-window {
+  background: #1e1e2e;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
 }
 
 .window-bar {
-  background: #21262d;
-  padding: 10px 14px;
+  background: #2a2a3c;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.window-dots {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.window-dots-placeholder {
+  width: 46px;
 }
 
 .dot {
@@ -80,4 +133,86 @@ body {
 }
 .dot.green {
   background: var(--color-dot-green);
+}
+
+.window-title {
+  font-size: 11px;
+  color: #94a3b8;
+  background: #1e1e2e;
+  padding: 2px 24px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.window-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 300px;
+}
+
+.window-body img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* 블러 배경 */
+.blur-bg {
+  position: absolute;
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blur-blue {
+  top: -10%;
+  left: -10%;
+  background: rgba(37, 99, 235, 0.2);
+  filter: blur(150px);
+}
+
+.blur-orange {
+  bottom: -10%;
+  right: -10%;
+  background: rgba(234, 88, 12, 0.2);
+  filter: blur(150px);
+}
+
+/* 모바일 - content-area 숨김 */
+#content-area {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  body {
+    overflow: hidden;
+  }
+
+  #layout {
+    display: flex;
+    height: 100vh;
+  }
+
+  #card-container {
+    flex: 2;
+    overflow-y: auto;
+    height: 100vh;
+  }
+
+  #content-area {
+    flex: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: #020617;
+    border-left: 1px solid #1e293b;
+    height: 100vh;
+  }
 }

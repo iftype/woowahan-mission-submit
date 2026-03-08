@@ -4,34 +4,46 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>라이브러리 테스트</title>
+  <title>우테코 미션 제출 가이드</title>
 
   <link rel="stylesheet" href="./style.css">
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@0.263.1/dist/umd/lucide.min.js"></script>
 </head>
 
 <body>
-  <h2>아이콘 테스트</h2>
-  <i data-lucide="copy"></i>
-  <i data-lucide="check"></i>
-  <i data-lucide="git-branch"></i>
-  <i data-lucide="terminal"></i>
-
-
   <div id="layout">
-    <div id="card-container"></div> <!-- 왼쪽 스크롤 -->
-    <div id="content-area"> <!-- 오른쪽 sticky -->
-      <div class="window-bar">
-        <span class="dot red"></span>
-        <span class="dot yellow"></span>
-        <span class="dot green"></span>
-      </div>
-      <div class="window-body">
-        <img src="" alt="" />
+
+    <!-- 왼쪽: 텍스트 카드 스크롤 -->
+    <div id="card-container"></div>
+
+    <!-- 오른쪽: sticky -->
+    <div id="content-area">
+
+      <!-- 블러 배경 -->
+      <div class="blur-bg blur-blue"></div>
+      <div class="blur-bg blur-orange"></div>
+
+      <!-- 맥 창 -->
+      <div class="mac-window">
+
+        <!-- 타이틀바 -->
+        <div class="window-bar">
+          <div class="window-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="window-title">woowahan-tech-course</span>
+          <div class="window-dots-placeholder"></div>
+        </div>
+
+        <!-- 본문 -->
+        <div class="window-body"></div>
+
       </div>
     </div>
-  </div>
 
+  </div>
 
   <script type="module" src="./scripts/main.js"></script>
 </body>

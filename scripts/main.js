@@ -11,7 +11,9 @@ async function render() {
     container.appendChild(card);
   }
 
-  lucide.createIcons();
+  if (typeof lucide !== "undefined") {
+    lucide.createIcons();
+  }
   observeCards();
 }
 
@@ -31,5 +33,14 @@ function observeCards() {
 
   document.querySelectorAll(".card").forEach((card) => observer.observe(card));
 }
+
+// 스크롤이벤트 여기서
+// main.js에 추가
+document.getElementById("content-area").addEventListener("wheel", (e) => {
+  e.preventDefault();
+  document.getElementById("card-container").scrollBy({
+    top: e.deltaY,
+  });
+});
 
 render();
