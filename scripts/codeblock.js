@@ -1,6 +1,6 @@
 import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
-const CodeBlock = {
-  async create(code, lang) {
+export const CodeBlock = {
+  async create({ code, lang }) {
     const highlighted = await codeToHtml(code, {
       lang,
       theme: "one-dark-pro",
@@ -37,8 +37,3 @@ const CodeBlock = {
     });
   },
 };
-
-const TEST_MSG = `git clone https://github.com/iftype/repo`;
-const block = await CodeBlock.create(TEST_MSG, "bash");
-document.getElementById("code-container").appendChild(block);
-lucide.createIcons();

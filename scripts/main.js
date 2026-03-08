@@ -1,14 +1,15 @@
 import { CodeBlock } from "./codeblock.js";
+import { GUIDE_DATA } from "../data/guide.js";
 
-const codes = [
-  { code: "git clone https://github.com/iftype/repo", lang: "bash" },
-  { code: "git checkout -b iftype", lang: "bash" },
-  { code: "git push origin iftype", lang: "bash" },
-];
+async function render() {
+  for (const guide of GUIDE_DATA) {
+    const { lang, codes } = guide;
 
-for (const item of codes) {
-  const block = await CodeBlock.create(item.code, item.lang);
-  document.getElementById("code-container").appendChild(block);
+    const renderCode = codes.join("\n");
+    const block = await CodeBlock.create({ code: renderCode, lang });
+    document.getElementById("card-container").appendChild(block);
+  }
+  lucide.createIcons();
 }
 
-lucide.createIcons();
+render();
