@@ -17,11 +17,21 @@
   <i data-lucide="git-branch"></i>
   <i data-lucide="terminal"></i>
 
-  <h2 style="margin-top: 24px">Shiki 코드블럭 테스트</h2>
 
-  <section>
-    <div id="card-container">테스트</div>
-  </section>
+  <div id="layout">
+    <div id="card-container"></div> <!-- 왼쪽 스크롤 -->
+    <div id="content-area"> <!-- 오른쪽 sticky -->
+      <div class="window-bar">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <div class="window-body">
+        <img src="" alt="" />
+      </div>
+    </div>
+  </div>
+
 
   <script type="module" src="./scripts/main.js"></script>
 </body>
