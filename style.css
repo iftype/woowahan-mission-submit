@@ -19,6 +19,9 @@ body {
   font-family: "Pretendard Variable", Pretendard, system-ui, sans-serif;
   color: #e2e8f0;
 }
+a {
+  color: rgb(122, 122, 246);
+}
 
 p,
 h1 {
@@ -40,11 +43,12 @@ h1 {
 
 .header-inputs {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
 }
 
-.header-inputs input {
+.header-inputs input,
+select {
   width: 100%;
   min-width: 0;
   height: 42px; /* 터치하기 좋게 살짝 높임 */
@@ -347,7 +351,7 @@ h1 {
     max-width: 900px;
     margin: 0 auto;
 
-    grid-template-columns: 1fr 1fr 2.5fr;
+    grid-template-columns: 1fr 1fr 1fr 2.5fr;
     gap: 20px;
   }
 
@@ -513,6 +517,7 @@ h1 {
   transition:
     transform 0.2s ease,
     background 0.2s ease;
+  animation: bounceDown 1.2s infinite;
 }
 
 .visual-btn:hover {
@@ -526,4 +531,9 @@ h1 {
   max-height: 400px;
   object-fit: contain;
   animation: bounceDown 1.2s infinite;
+}
+
+.input-disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }

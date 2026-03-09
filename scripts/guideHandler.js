@@ -1,9 +1,10 @@
 import { ContentArea } from "./contentArea.js";
 import { GUIDE_DATA } from "../data/guide.js";
-import { Card } from "./card.js";
+import { state } from "./stateManager.js";
+import { Card } from "./Card.js";
 
 let observer = null;
-let currentStep = 1;
+let currentDataStep = 1;
 
 function waitForLucide() {
   return new Promise((resolve) => {
@@ -21,13 +22,22 @@ function waitForLucide() {
   });
 }
 
+function getFilteredGuideData() {
+  return GUIDE_DATA.filter((guide) => {
+    if (!guide.mission) return true;
+    return guide.mission.includes(state.step);
+  });
+}
+
 export async function render() {
   ContentArea.init();
 
   const container = document.getElementById("card-container");
   container.innerHTML = "";
 
-  for (const guide of GUIDE_DATA) {
+  const filteredGuideData = getFilteredGuideData();
+
+  for (const guide of filteredGuideData) {
     const card = await Card.create(guide);
     container.appendChild(card);
   }
@@ -37,7 +47,7 @@ export async function render() {
 
   observeCards();
 
-  const firstCard = document.querySelector(`.card[data-step="${currentStep}"]`) || document.querySelector(".card");
+  const firstCard = document.querySelector(`.card[data-step="${currentDataStep}"]`) || document.querySelector(".card");
 
   if (firstCard) {
     setActiveCard(firstCard);
@@ -46,7 +56,7 @@ export async function render() {
 
 function setActiveCard(card) {
   const step = Number(card.dataset.step);
-  currentStep = step;
+  currentDataStep = step;
 
   const guide = GUIDE_DATA.find((g) => g.step === step);
   ContentArea.update(guide?.content);
@@ -72,7 +82,7 @@ function observeCards() {
       const nextCard = visibleEntries[0].target;
       const nextStep = Number(nextCard.dataset.step);
 
-      if (nextStep === currentStep) return;
+      if (nextStep === currentDataStep) return;
 
       setActiveCard(nextCard);
     },
@@ -90,7 +100,8 @@ export async function refreshCards() {
 
   for (const card of cards) {
     const step = Number(card.dataset.step);
-    const guide = GUIDE_DATA.find((g) => g.step === step);
+
+    const guide = getFilteredGuideData().find((g) => g.step === step);
     if (!guide) continue;
 
     await Card.update(card, guide);
@@ -100,7 +111,7 @@ export async function refreshCards() {
   lucide.createIcons();
 
   const activeCard =
-    document.querySelector(`.card[data-step="${currentStep}"]`) ||
+    document.querySelector(`.card[data-step="${currentDataStep}"]`) ||
     document.querySelector(".card.active") ||
     document.querySelector(".card");
 
@@ -108,7 +119,7 @@ export async function refreshCards() {
     activeCard.classList.add("active");
   }
 
-  const activeGuide = GUIDE_DATA.find((g) => g.step === currentStep);
+  const activeGuide = GUIDE_DATA.find((g) => g.step === currentDataStep);
   ContentArea.update(activeGuide?.content);
 }
 

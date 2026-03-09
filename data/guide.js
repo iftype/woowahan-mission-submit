@@ -1,6 +1,7 @@
 export const GUIDE_DATA = [
   {
     step: 0,
+    mission: ["step1", "step2"],
     title: "우아한 테크코스\n미션 제출 가이드",
     desc: "순서대로 진행하여 미션 제출을 편하게 해보세요.\n 우측 화면에 나오는 버튼을 눌러 편하게 실행해보세요",
     helper: "아래로 내려가며 제출 과정을 확인하세요",
@@ -13,6 +14,7 @@ export const GUIDE_DATA = [
   {
     step: 1,
     title: "미션 시작",
+    mission: ["step1"],
     desc: `강의관리시스템에 로그인 후 미션으로 이동해 미션 시작 버튼을 클릭합니다.
     저장소에 본인 GitHub 아이디의 브랜치가 생성됩니다.`,
     lang: "bash",
@@ -23,14 +25,29 @@ export const GUIDE_DATA = [
       background: "rgba(31, 105, 105, 0.39)",
       imageSize: "width:600px;height:400px",
     },
+  },
+  {
+    step: 1.5,
+    mission: ["step2"],
+    title: "다음 미션 브랜치 생성",
+    desc: "{STEP} 미션을 위한 새로운 브랜치를 생성합니다.",
+    lang: "bash",
+    codes: ["git checkout -b {STEP}"],
+    content: {
+      background: "rgba(164, 112, 0, 0.48)",
+      type: "visual",
+      icon: "🎯",
+      label: "Next Mission",
+    },
     alert: {
       kind: "note",
       title: "NOTE",
-      message: "미션이 시작됐음에도 브랜치가 생성되지 않은 경우 코치님께 브랜치 생성을 요청하세요",
+      message: "STEP1에서 클론한 저장소에서 시작합니다!",
     },
   },
   {
     step: 2,
+    mission: ["step1"],
     title: "저장소 포크",
     desc: "woowacourse 저장소에 직접 코드를 추가할 권한이 없기 때문에 본인 계정으로 포크합니다.\n\n상단 입력창에서 레포 URL을 입력하면 우측 화면의 버튼들로 진행이 가능해집니다",
     lang: "bash",
@@ -46,6 +63,7 @@ export const GUIDE_DATA = [
   {
     step: 3,
     title: "포크한 저장소 클론",
+    mission: ["step1"],
     desc: "포크한 저장소를 본인 컴퓨터로 클론합니다.\n 본인 아이디 브랜치를 클론합니다.",
     lang: "bash",
     codes: ["git clone -b {A} --single-branch https://github.com/{A}/{REPO_NAME}.git", "cd {REPO_NAME}"],
@@ -63,10 +81,11 @@ export const GUIDE_DATA = [
   },
   {
     step: 4,
+    mission: ["step1", "step2"],
     title: "기능 구현 브랜치 생성",
     desc: "기능 구현을 위한 브랜치를 생성합니다.",
     lang: "bash",
-    codes: ["git checkout -b step1"],
+    codes: ["git checkout -b {STEP}"],
     content: {
       type: "visual",
       icon: "🎋",
@@ -81,6 +100,7 @@ export const GUIDE_DATA = [
   },
   {
     step: 5,
+    mission: ["step1"],
     title: "페어 프로그래밍",
     desc: `짝과 함께 한 사람의 저장소에서 작업합니다.\n
     드라이버와 내비게이터 역할을 수시로 바꾸며 진행합니다. 온라인이라면 VSCode Live Share를 활용합니다.`,
@@ -97,6 +117,7 @@ export const GUIDE_DATA = [
   {
     step: 6,
     title: "기능 구현 후 커밋",
+    mission: ["step1", "step2"],
     desc: "미션 요구사항을 파악해 기능을 구현한 후 add, commit 합니다.",
     lang: "bash",
     codes: ["git status", "git add .", 'git commit -m "feat: 기능 구현"'],
@@ -110,9 +131,11 @@ export const GUIDE_DATA = [
   {
     step: 7,
     title: "원격 저장소에 푸시",
+    mission: ["step1", "step2"],
+
     desc: "로컬 저장소의 변경 내용을 원격 저장소에 반영합니다.",
     lang: "bash",
-    codes: ["git push origin step1"],
+    codes: ["git push origin {STEP}"],
     content: {
       type: "visual",
       icon: "🚀",
@@ -128,6 +151,8 @@ export const GUIDE_DATA = [
   {
     step: 8,
     title: "팀 피드백 및 헤어지기",
+    mission: ["step1"],
+
     desc: "강의관리시스템에서 짝에게 피드백을 남기고 팀을 분리합니다. 팀이 분리되면 각자 개인 미션을 진행합니다.",
     lang: "bash",
     codes: [],
@@ -142,6 +167,8 @@ export const GUIDE_DATA = [
   {
     step: 9,
     title: "{B} 저장소에서 커밋 가져오기",
+    mission: ["step1"],
+
     desc: "작업이 {B}의 저장소에서 진행됐다면 {A}는 {B}의 저장소를 remote로 추가한 뒤 해당 브랜치를 가져옵니다.",
     lang: "bash",
     codes: [
@@ -164,9 +191,11 @@ export const GUIDE_DATA = [
   {
     step: 10,
     title: "{B} - 본인 저장소에 푸시",
+    mission: ["step1"],
+
     desc: "{B}는 가져온 코드를 본인 포크 저장소에 푸시합니다.",
     lang: "bash",
-    codes: ["git push origin step1"],
+    codes: ["git push origin {STEP}"],
     content: {
       type: "visual",
       icon: "🚀",
@@ -177,6 +206,8 @@ export const GUIDE_DATA = [
   {
     step: 11,
     title: "PR 보내기",
+    mission: ["step1", "step2"],
+
     desc: "본인 저장소의 작업 브랜치에서 woowacourse 저장소의 본인 아이디 브랜치로 PR을 보냅니다. base 브랜치가 본인 아이디인지 꼭 확인하세요.",
     lang: "bash",
     codes: [],
@@ -186,8 +217,8 @@ export const GUIDE_DATA = [
       label: "Send Pull Request",
       background: "rgba(239, 251, 176, 0.71)",
       action: {
-        text: "PR 보내기(step-1)",
-        url: "https://github.com/{REPO_OWNER}/{REPO_NAME}/compare/{A}...{A}:step1",
+        text: "PR 보내기({STEP})",
+        url: "https://github.com/{REPO_OWNER}/{REPO_NAME}/compare/{A}...{A}:{STEP}",
       },
     },
     alert: {
@@ -199,6 +230,8 @@ export const GUIDE_DATA = [
   {
     step: 12,
     title: "리뷰 요청",
+    mission: ["step1", "step2"],
+
     desc: "PR을 보낸 후 강의관리시스템의 리뷰요청 버튼을 클릭해 리뷰어에게 리뷰 요청을 보냅니다.",
     lang: "bash",
     codes: [],
@@ -213,9 +246,11 @@ export const GUIDE_DATA = [
   {
     step: 13,
     title: "피드백 반영 후 push",
+    mission: ["step1", "step2"],
+
     desc: "피드백을 받으면 내용을 반영한 후 add, commit, push 합니다. 새로운 PR을 보내지 않아도 기존 PR에 자동으로 반영됩니다.",
     lang: "bash",
-    codes: ["git add -A", 'git commit -m "refactor: 피드백 반영"', "git push origin step1"],
+    codes: ["git add -A", 'git commit -m "refactor: 피드백 반영"', "git push origin {STEP}"],
     content: {
       type: "visual",
       background: "rgba(255, 75, 75, 0.48)",
@@ -226,19 +261,28 @@ export const GUIDE_DATA = [
   {
     step: 14,
     title: "merge 후 브랜치 정리",
+    mission: ["step1", "step2"],
+
     desc: "PR이 merge되면 작업 브랜치를 삭제하고 본인 아이디 브랜치로 이동합니다.",
     lang: "bash",
-    codes: ["git checkout {A}", "git branch -D step1"],
+    codes: ["git checkout {A}", "git branch -D {STEP}"],
     content: {
       background: "rgba(1, 28, 86, 0.48)",
       type: "visual",
       icon: "🧹",
       label: "Clean Up Branch",
     },
+    alert: {
+      kind: "note",
+      title: "NOTE",
+      message: "리뷰어 피드백도 잊지마세요!",
+    },
   },
   {
     step: 15,
     title: "upstream 추가 및 동기화",
+
+    mission: ["step1", "step2"],
     desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
     lang: "bash",
     codes: [
@@ -255,20 +299,8 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 16,
-    title: "다음 미션 브랜치 생성",
-    desc: "동기화가 완료되면 다음 미션을 위한 새로운 브랜치를 생성합니다.",
-    lang: "bash",
-    codes: ["git checkout -b step2"],
-    content: {
-      background: "rgba(164, 112, 0, 0.48)",
-      type: "visual",
-      icon: "🎯",
-      label: "Next Mission",
-    },
-  },
-  {
     step: 17,
+    mission: ["step1", "step2"],
     title: "우테코 미션 제출 관련 링크들",
     desc: "미션 관련 링크입니다",
     lang: "bash",
@@ -280,12 +312,12 @@ export const GUIDE_DATA = [
     },
     links: [
       {
-        text: "링크 테스트",
-        url: "{naver.com}",
+        text: "이미지로 보는 미션제출법",
+        url: "{https://github.com/woowacourse/woowacourse-docs/blob/main/maincourse/README.md}",
       },
       {
-        text: "링크 테스트",
-        url: "{naver.com}",
+        text: "온라인 코드리뷰 유튜브",
+        url: "{https://techcourse.woowahan.com/s/kQ36YI2O/ls/De4pxfyT}",
       },
     ],
   },

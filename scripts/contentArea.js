@@ -39,5 +39,8 @@ export const ContentArea = {
 };
 
 function parseAction(action) {
-  return `<a href="${replacePlaceholders(action.url)}" target="_blank" class="visual-btn">${action.text}</a>`;
+  if (!action) return;
+  const url = replacePlaceholders(action.url);
+  const text = replacePlaceholders(action.text);
+  return `<a href="${url}" target="_blank" class="visual-btn">${text}</a>`;
 }
