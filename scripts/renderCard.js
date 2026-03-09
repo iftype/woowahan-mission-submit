@@ -104,7 +104,7 @@ async function intro(card, title, desc) {
       `;
 }
 
-export const Card = {
+export const CardComponent = {
   async create(guide) {
     const card = document.createElement("div");
     card.className = "card";

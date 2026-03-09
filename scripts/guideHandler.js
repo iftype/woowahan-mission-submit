@@ -1,7 +1,7 @@
 import { ContentArea } from "./contentArea.js";
 import { GUIDE_DATA } from "../data/guide.js";
 import { state } from "./stateManager.js";
-import { Card } from "./card.js";
+import { CardComponent } from "./renderCard.js";
 
 let observer = null;
 let currentDataStep = 1;
@@ -38,7 +38,7 @@ export async function render() {
   const filteredGuideData = getFilteredGuideData();
 
   for (const guide of filteredGuideData) {
-    const card = await Card.create(guide);
+    const card = await CardComponent.create(guide);
     container.appendChild(card);
   }
 
@@ -104,7 +104,7 @@ export async function refreshCards() {
     const guide = getFilteredGuideData().find((g) => g.step === step);
     if (!guide) continue;
 
-    await Card.update(card, guide);
+    await CardComponent.update(card, guide);
   }
 
   await waitForLucide();
