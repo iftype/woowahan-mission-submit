@@ -1,5 +1,6 @@
 import { CodeBlock } from "./codeblock.js";
 import { replacePlaceholders } from "./stateManager.js";
+import { renderMacWindow } from "./contentArea.js";
 
 function renderAlert(alert) {
   if (!alert) return "";
@@ -7,6 +8,7 @@ function renderAlert(alert) {
   const kindClass = alert.kind ? `card-alert-${alert.kind}` : "card-alert-note";
   const title = replacePlaceholders(alert.title || "NOTE" || "WARNING");
   const message = replacePlaceholders(alert.message || "");
+
   return `
     <div class="card-alert ${kindClass}">
       <div class="card-alert-header">
@@ -39,11 +41,55 @@ function renderLinks(links, target) {
   target.appendChild(ul);
 }
 
+function renderMobileContent(content, target) {
+  if (!target || !content) return;
+
+  target.innerHTML = renderMacWindow();
+
+  const body = target.querySelector(".window-body");
+
+  body.style.backgroundColor = content?.background ?? "";
+  body.innerHTML = renderContentBody(content);
+
+  if (content.type === "image") {
+    const img = target.querySelector(".window-image");
+    if (img) img.style.cssText = content.imageSize ?? "";
+  }
+}
+
+function renderContentBody(content) {
+  if (!content) return "";
+
+  if (content.type === "image") {
+    return `
+      <div class="window-stage">
+        <img class="window-image" src="${replacePlaceholders(content.src)}" />
+      </div>
+    `;
+  }
+
+  const actionHtml = content?.action
+    ? `<a href="${replacePlaceholders(content.action.url)}" target="_blank" class="visual-btn">${replacePlaceholders(content.action.text)}</a>`
+    : "";
+
+  return `
+    <div class="window-stage">
+      <div class="visual-card">
+        <span class="visual-icon">${content.icon ?? ""}</span>
+        <p class="visual-label">${replacePlaceholders(content.label ?? "")}</p>
+        ${actionHtml}
+      </div>
+    </div>
+  `;
+}
+
 async function intro(card, title, desc) {
   card.classList.add("card-intro");
 
   card.innerHTML = `
         <div class="card-text card-intro-text">
+      <div class="card-mobile-content"></div>
+
           <h1 class="card-intro-title">
             ${replacePlaceholders(title)}
           </h1>
@@ -69,45 +115,43 @@ export const Card = {
   },
 
   async update(card, guide) {
-    const { step, title, desc, lang, codes = [], alert, links } = guide;
-
-    if (step === 0) {
-      await intro(card, title, desc);
-      return;
-    }
+    const { step, title, desc, lang, codes = [], alert, links, content } = guide;
 
     card.classList.remove("card-intro");
 
     card.innerHTML = `
+    <div class="card-mobile-content"></div>
       <div class="card-text">
         <h2 class="card-title"></h2>
         <p class="card-desc"></p>
         <div class="card-code"></div>
         <div class="card-alert-area"></div>
       </div>
+
     `;
 
-    const textEl = card.querySelector(".card-text");
     const titleEl = card.querySelector(".card-title");
     const descEl = card.querySelector(".card-desc");
     const codeArea = card.querySelector(".card-code");
     const alertArea = card.querySelector(".card-alert-area");
+    const textEl = card.querySelector(".card-text");
 
-    const nextTitle = replacePlaceholders(title);
-    const nextDesc = replacePlaceholders(desc);
-    const nextCode = codes.map(replacePlaceholders).join("\n");
-    const prevCode = card.dataset.renderedCode || "";
+    titleEl.textContent = replacePlaceholders(title);
+    descEl.textContent = replacePlaceholders(desc);
 
-    titleEl.textContent = nextTitle;
-    descEl.textContent = nextDesc;
     alertArea.innerHTML = renderAlert(alert);
     renderLinks(links, textEl);
 
-    if (nextCode === prevCode && codeArea.children.length > 0) return;
+    const codeText = codes.map(replacePlaceholders).join("\n");
+    if (codeText) {
+      const block = await CodeBlock.create({ code: codeText, lang });
+      codeArea.appendChild(block);
+    }
 
-    const newBlock = nextCode ? await CodeBlock.create({ code: nextCode, lang }) : null;
-
-    codeArea.replaceChildren(...(newBlock ? [newBlock] : []));
-    card.dataset.renderedCode = nextCode;
+    if (step === 0) {
+      await intro(card, title, desc);
+    }
+    const mobileContent = card.querySelector(".card-mobile-content");
+    renderMobileContent(content, mobileContent);
   },
 };

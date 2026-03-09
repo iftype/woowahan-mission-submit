@@ -3,7 +3,7 @@ export const GUIDE_DATA = [
     step: 0,
     mission: ["step1", "step2"],
     title: "우아한 테크코스\n미션 제출 가이드",
-    desc: "순서대로 진행하여 미션 제출을 편하게 해보세요.\n 우측 화면에 나오는 버튼을 눌러 편하게 실행해보세요",
+    desc: "순서대로 진행하여 미션 제출을 편하게 해보세요.\n 우측 화면에 나오는 버튼을 눌러 편하게 실행해보세요\n\n화면 상단 입력칸에 아이디와 레포 주소 입력시 버튼과 연동됩니다",
     helper: "아래로 내려가며 제출 과정을 확인하세요",
     content: {
       type: "image",
@@ -13,6 +13,45 @@ export const GUIDE_DATA = [
   },
   {
     step: 1,
+    mission: ["step1"],
+    title: "미션 프로세스",
+    desc: "미션 프로세스는 우측 이미지의 프로세스를 따릅니다\n",
+    content: {
+      type: "image",
+      src: "./assets/images/mission-process.png",
+      imageSize: "width:80%;height:400px",
+      background: "rgba(181, 213, 78, 0.39)",
+    },
+    alert: {
+      kind: "note",
+      title: "NOTE",
+      message: "해당 자료는 LMS 미션 및 온라인 코드 리뷰에 있으며,\n 해당 페이지 아래 링크가 첨부되어있습니다",
+    },
+  },
+  {
+    step: 2,
+    title: "각 미션별 리뷰 요청 마감 일정",
+    mission: ["step1"],
+    desc: `1단계(페어): 목요일 오후 6시(세 번째 미션은 금 6시)
+    2단계 : 다음 주 월요일 6시
+  
+    `,
+    lang: "bash",
+    codes: [],
+    content: {
+      type: "image",
+      src: "./assets/images/review-plan.png",
+      background: "rgba(31, 105, 105, 0.39)",
+      imageSize: "width:90%;height:400px",
+    },
+    alert: {
+      kind: "warning",
+      title: "WARNING",
+      message: "마감 시한은 PR을 만든 시간이 아니라 'LMS에서 리뷰어에게 리뷰 요청을 보낸 시간'",
+    },
+  },
+  {
+    step: 3,
     title: "미션 시작",
     mission: ["step1"],
     desc: `강의관리시스템에 로그인 후 미션으로 이동해 미션 시작 버튼을 클릭합니다.
@@ -23,14 +62,42 @@ export const GUIDE_DATA = [
       type: "image",
       src: "./assets/images/step-1-mission-start.png",
       background: "rgba(31, 105, 105, 0.39)",
-      imageSize: "width:600px;height:400px",
+      imageSize: "width:80%;height:70%",
     },
   },
   {
-    step: 1.5,
+    step: 4,
+    mission: ["step2"],
+    title: "작업하던 레포를 지워렸어요!!",
+    desc: "괜찮습니다! 미션 저장소를 다시 clone한 뒤 원격저장소를 추가하고 최신 변경사항을 가져오세요.",
+    lang: "bash",
+    codes: [
+      "git clone -b {A} --single-branch https://github.com/{A}/{REPO_NAME}.git",
+      "cd {REPO_NAME}",
+      "",
+      "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
+      "git fetch upstream {A}",
+      "git fetch origin {A}",
+      "git rebase upstream/{A}",
+    ],
+    content: {
+      type: "image",
+      src: "./assets/images/computer-man.png",
+      background: "rgba(255, 78, 43, 0.39)",
+      imageSize: "width:80%;height:70%",
+    },
+    alert: {
+      kind: "note",
+      title: "NOTE",
+      message:
+        "upstream에 올라간 내 브랜치를 가져와 작업합니다.\n 원격저장소애 {A}브랜치가 없을 경우 최근 작업한 브랜치로 받아와주세요",
+    },
+  },
+  {
+    step: 5,
     mission: ["step2"],
     title: "다음 미션 브랜치 생성",
-    desc: "{STEP} 미션을 위한 새로운 브랜치를 생성합니다.",
+    desc: "작업하던 로컬 저장소로 이동 후 변경 사항이 있는지 체크하고, {STEP} 미션을 위한 새로운 브랜치(step2)를 생성합니다.",
     lang: "bash",
     codes: ["git checkout -b {STEP}"],
     content: {
@@ -42,11 +109,11 @@ export const GUIDE_DATA = [
     alert: {
       kind: "note",
       title: "NOTE",
-      message: "STEP1에서 클론한 저장소에서 시작합니다!",
+      message: "작업할 준비가 되었습니다!",
     },
   },
   {
-    step: 2,
+    step: 6,
     mission: ["step1"],
     title: "저장소 포크",
     desc: "woowacourse 저장소에 직접 코드를 추가할 권한이 없기 때문에 본인 계정으로 포크합니다.\n\n상단 입력창에서 레포 URL을 입력하면 우측 화면의 버튼들로 진행이 가능해집니다",
@@ -59,14 +126,19 @@ export const GUIDE_DATA = [
       action: { text: "포크하기", url: "{REPO}/fork" },
       background: "rgba(162, 246, 184, 0.71)",
     },
+    alert: {
+      kind: "note",
+      title: "NOTE",
+      message: "Copy the master branch only는 체크해제하여 브랜치를 받아와주세요.",
+    },
   },
   {
-    step: 3,
+    step: 7,
     title: "포크한 저장소 클론",
     mission: ["step1"],
-    desc: "포크한 저장소를 본인 컴퓨터로 클론합니다.\n 본인 아이디 브랜치를 클론합니다.",
+    desc: "포크해온 저장소를 클론하고 원격저장소로 추가합니다",
     lang: "bash",
-    codes: ["git clone -b {A} --single-branch https://github.com/{A}/{REPO_NAME}.git", "cd {REPO_NAME}"],
+    codes: ["git clone -b {A} --single-branch https://github.com/{A}/{REPO_NAME}", "cd {REPO_NAME}"],
     content: {
       type: "visual",
       icon: "💻",
@@ -76,16 +148,16 @@ export const GUIDE_DATA = [
     alert: {
       kind: "note",
       title: "NOTE",
-      message: "--single-branch로 자신의 브랜치만 가져올 수 있습니다",
+      message: "--single-branch로 브랜치 하나만을 가져옵니다",
     },
   },
   {
-    step: 4,
-    mission: ["step1", "step2"],
+    step: 8,
+    mission: ["step1"],
     title: "기능 구현 브랜치 생성",
     desc: "기능 구현을 위한 브랜치를 생성합니다.",
     lang: "bash",
-    codes: ["git checkout -b {STEP}"],
+    codes: ["git checkout -b step1"],
     content: {
       type: "visual",
       icon: "🎋",
@@ -99,7 +171,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 5,
+    step: 9,
     mission: ["step1"],
     title: "페어 프로그래밍",
     desc: `짝과 함께 한 사람의 저장소에서 작업합니다.\n
@@ -115,7 +187,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 6,
+    step: 10,
     title: "기능 구현 후 커밋",
     mission: ["step1", "step2"],
     desc: "미션 요구사항을 파악해 기능을 구현한 후 add, commit 합니다.",
@@ -129,7 +201,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 7,
+    step: 11,
     title: "원격 저장소에 푸시",
     mission: ["step1", "step2"],
 
@@ -145,11 +217,11 @@ export const GUIDE_DATA = [
     alert: {
       kind: "note",
       title: "NOTE",
-      message: "remote 이름 origin - 내 저장소, upstream - 원본 저장소",
+      message: "origin - 내 원격 저장소, upstream - 원본 저장소",
     },
   },
   {
-    step: 8,
+    step: 12,
     title: "팀 피드백 및 헤어지기",
     mission: ["step1"],
 
@@ -165,7 +237,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 9,
+    step: 13,
     title: "{B} 저장소에서 커밋 가져오기",
     mission: ["step1"],
 
@@ -173,8 +245,8 @@ export const GUIDE_DATA = [
     lang: "bash",
     codes: [
       "git remote add {B} https://github.com/{B}/{REPO_NAME}.git",
-      "git fetch {B} step1",
-      "git checkout -b step1 {B}/step1",
+      "git fetch {B}",
+      "git checkout step1 || git checkout -b step1 {B}/step1",
     ],
     content: {
       type: "visual",
@@ -189,7 +261,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 10,
+    step: 14,
     title: "{B} - 본인 저장소에 푸시",
     mission: ["step1"],
 
@@ -204,7 +276,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 11,
+    step: 15,
     title: "PR 보내기",
     mission: ["step1", "step2"],
 
@@ -228,7 +300,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 12,
+    step: 16,
     title: "리뷰 요청",
     mission: ["step1", "step2"],
 
@@ -244,7 +316,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 13,
+    step: 17,
     title: "피드백 반영 후 push",
     mission: ["step1", "step2"],
 
@@ -257,9 +329,14 @@ export const GUIDE_DATA = [
       icon: "🔄",
       label: "Apply Feedback",
     },
+    alert: {
+      kind: "note",
+      title: "NOTE",
+      message: "add -A는 add .와 동일한 기능을 합니다",
+    },
   },
   {
-    step: 14,
+    step: 18,
     title: "merge 후 브랜치 정리",
     mission: ["step1", "step2"],
 
@@ -272,21 +349,16 @@ export const GUIDE_DATA = [
       icon: "🧹",
       label: "Clean Up Branch",
     },
-    alert: {
-      kind: "note",
-      title: "NOTE",
-      message: "리뷰어 피드백도 잊지마세요!",
-    },
   },
   {
-    step: 15,
+    step: 19,
     title: "upstream 추가 및 동기화",
 
     mission: ["step1", "step2"],
     desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
     lang: "bash",
     codes: [
-      "git remote add upstream {REPO}.git",
+      "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
       "git fetch origin {A}",
       "git rebase upstream/{A}",
@@ -299,7 +371,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 17,
+    step: 20,
     mission: ["step1", "step2"],
     title: "우테코 미션 제출 관련 링크들",
     desc: "미션 관련 링크입니다",
@@ -308,16 +380,36 @@ export const GUIDE_DATA = [
       type: "image",
       src: "./assets/images/planet-pair.png",
       background: "rgba(167, 167, 167, 0.6)",
-      imageSize: "width:600px;height:400px",
+      imageSize: "width:479px;height:400px",
     },
     links: [
       {
-        text: "이미지로 보는 미션제출법",
-        url: "{https://github.com/woowacourse/woowacourse-docs/blob/main/maincourse/README.md}",
+        text: "이미지로 보는 미션제출법-1",
+        url: "https://github.com/woowacourse/woowacourse-docs/blob/main/maincourse/review-step1.md",
       },
       {
-        text: "온라인 코드리뷰 유튜브",
-        url: "{https://techcourse.woowahan.com/s/kQ36YI2O/ls/De4pxfyT}",
+        text: "이미지로 보는 미션제출법-2",
+        url: "https://github.com/woowacourse/woowacourse-docs/blob/main/maincourse/review-step2.md",
+      },
+      {
+        text: "이미지로 보는 미션제출법-3",
+        url: "https://github.com/woowacourse/woowacourse-docs/blob/main/maincourse/review-step3.md",
+      },
+      {
+        text: "온라인 코드리뷰 유튜브-1",
+        url: "https://www.youtube.com/watch?v=YkgBUt7zG5k",
+      },
+      {
+        text: "온라인 코드리뷰 유튜브-2",
+        url: "https://www.youtube.com/watch?v=HnTdFJd0PtU",
+      },
+      {
+        text: "온라인 코드리뷰 유튜브-3",
+        url: "https://www.youtube.com/watch?v=fzrT3eoecUw",
+      },
+      {
+        text: "LMS 코드리뷰 규칙",
+        url: "https://techcourse.woowahan.com/s/kQ36YI2O/ls/De4pxfyT",
       },
     ],
   },

@@ -12,7 +12,7 @@ export function replacePlaceholders(text) {
   const parts = repoUrl.split("/");
 
   const repoOwner = parts[3];
-  const repoName = parts[4];
+  const repoName = parts[4].replace(".git", "");
 
   return String(text)
     .replace(/\{A\}/g, state.userA || initState.userA)
