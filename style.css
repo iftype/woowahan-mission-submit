@@ -38,7 +38,7 @@ li {
 /* header */ /* header */
 #guide-header {
   z-index: 100;
-  position: sticky;
+  position: fixed;
   top: 0;
   padding: 10px 16px;
   background: transparent;
@@ -394,11 +394,6 @@ select {
     gap: 16px;
   }
 
-  .active .card-text .card-title,
-  .active .card-text .card-intro-title {
-    color: var(--color-woowahan);
-  }
-
   .card-title {
     font-size: 1.5rem;
     font-weight: 700;
@@ -417,6 +412,15 @@ select {
     object-fit: contain;
     animation: bounceDown 1.2s infinite;
   }
+  .card-intro {
+    padding-top: 80px;
+    padding-bottom: 180px;
+  }
+}
+
+.active .card-text .card-title,
+.active .card-text .card-intro-title {
+  color: var(--color-woowahan);
 }
 
 @media (min-width: 1000px) {
@@ -430,7 +434,7 @@ select {
 }
 
 .card-intro {
-  padding-top: 80px;
+  padding-top: 70px;
   padding-bottom: 180px;
 }
 
