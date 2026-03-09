@@ -192,7 +192,7 @@ export const GUIDE_DATA = [
     },
     alert: {
       kind: "warning",
-      title: "warning",
+      title: "WARNING",
       message: "미션 저장소의 브랜치를 확실히 확인하세요",
     },
   },

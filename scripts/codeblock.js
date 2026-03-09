@@ -1,4 +1,5 @@
 import { codeToHtml } from "https://esm.sh/shiki@3.0.0";
+
 export const CodeBlock = {
   async create({ code, lang }) {
     const highlighted = await codeToHtml(code, {
@@ -15,7 +16,6 @@ export const CodeBlock = {
       </button>
       ${highlighted}
     `;
-
     this._bindCopy(wrapper, code);
     return wrapper;
   },
