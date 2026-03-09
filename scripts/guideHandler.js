@@ -1,7 +1,7 @@
 import { ContentArea } from "./contentArea.js";
 import { GUIDE_DATA } from "../data/guide.js";
 import { state } from "./stateManager.js";
-import { Card } from "./Card.js";
+import { Card } from "./card.js";
 
 let observer = null;
 let currentDataStep = 1;
