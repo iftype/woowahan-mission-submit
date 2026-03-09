@@ -28,6 +28,9 @@ h1 {
   white-space: pre-line;
 }
 
+li {
+  margin-top: 4px;
+}
 #app {
   min-height: 100vh;
 }
@@ -103,7 +106,8 @@ select {
   padding: 20px 20px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  margin-bottom: 40px;
+  gap: 50px;
 }
 
 .card-title {
@@ -327,7 +331,6 @@ select {
     overflow: hidden;
     height: 100%;
   }
-
   #app {
     height: 100dvh;
     display: flex;
@@ -368,7 +371,7 @@ select {
 
   #layout {
     display: flex;
-    flex: 1;
+    flex: 2;
     min-height: 0;
   }
 
@@ -384,7 +387,7 @@ select {
   }
 
   .card {
-    min-height: 70vh;
+    min-height: 50vh;
     padding: 29px 27px;
     display: flex;
     flex-direction: column;
@@ -407,6 +410,22 @@ select {
     font-size: 1rem;
     color: #94a3b8;
     line-height: 1.7;
+  }
+  .window-image {
+    max-width: 800px;
+    max-height: 600px;
+    object-fit: contain;
+    animation: bounceDown 1.2s infinite;
+  }
+}
+
+@media (min-width: 1000px) {
+  #layout {
+    flex: 1;
+  }
+
+  #content-area {
+    flex: 4;
   }
 }
 
@@ -468,7 +487,7 @@ select {
   min-height: 360px;
   padding: 48px 36px;
   border-radius: 32px;
-  background: rgba(6, 9, 24, 0.78);
+  background-color: #1b1b20;
   border: 1px solid rgba(255, 255, 255, 0.04);
   display: flex;
   flex-direction: column;
@@ -527,13 +546,57 @@ select {
 }
 
 .window-image {
-  max-width: 600px;
-  max-height: 400px;
   object-fit: contain;
   animation: bounceDown 1.2s infinite;
 }
 
-.input-disabled {
-  pointer-events: none;
-  opacity: 0.5;
+.card-mobile-content {
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .card-mobile-content {
+    display: none;
+  }
+}
+.card-mobile-content {
+  margin-top: 16px;
+}
+
+.card-mobile-content .mac-window {
+  width: 100%;
+}
+
+.card-mobile-content .window-body {
+  min-height: auto;
+  padding: 12px;
+}
+
+.card-mobile-content .window-image {
+  width: 100% !important;
+  max-width: 100%;
+  height: auto !important;
+  max-height: none;
+  object-fit: contain;
+}
+
+.card-mobile-content .visual-card {
+  width: 100%;
+  min-height: auto;
+  padding: 28px 20px;
+  border-radius: 20px;
+}
+
+.card-mobile-content .visual-label {
+  font-size: 1.2rem;
+}
+
+.window-body {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  min-height: 300px;
+  transition: all 2s ease;
 }

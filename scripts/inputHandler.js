@@ -25,11 +25,7 @@ export function initInputs() {
   inputStep.addEventListener("change", () => {
     state.step = inputStep.value || initState.initState;
     const inputB = document.getElementById("input-user-pair");
-    if (state.step === "step2") {
-      inputB.classList.add("input-disabled");
-    } else {
-      inputB.classList.remove("input-disabled");
-    }
+    inputB.disabled = state.step === "step2" ? true : false;
 
     render();
     refreshCards();
