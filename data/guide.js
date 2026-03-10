@@ -68,7 +68,7 @@ export const GUIDE_DATA = [
   {
     step: 4,
     mission: ["step2"],
-    title: "작업하던 레포를 지워렸어요!!",
+    title: "작업하던 레포를 지워버렸어요!!",
     desc: "괜찮습니다! 미션 저장소를 다시 clone한 뒤 원격저장소를 추가하고 최신 변경사항을 가져오세요.",
     lang: "bash",
     codes: [
