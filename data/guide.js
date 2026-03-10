@@ -262,10 +262,10 @@ export const GUIDE_DATA = [
   },
   {
     step: 14,
-    title: "{B} - 본인 저장소에 푸시",
+    title: "{A} - 본인 저장소에 푸시",
     mission: ["step1"],
 
-    desc: "{B}는 가져온 코드를 본인 포크 저장소에 푸시합니다.",
+    desc: "{A}는 가져온 코드를 본인 포크 저장소에 푸시합니다.",
     lang: "bash",
     codes: ["git push origin {STEP}"],
     content: {
@@ -280,7 +280,7 @@ export const GUIDE_DATA = [
     title: "PR 보내기",
     mission: ["step1", "step2"],
 
-    desc: "본인 저장소의 작업 브랜치에서 woowacourse 저장소의 본인 아이디 브랜치로 PR을 보냅니다. base 브랜치가 본인 아이디인지 꼭 확인하세요.",
+    desc: "본인 저장소의 작업 브랜치에서 woowacourse 저장소의 본인 아이디 브랜치로 PR을 보냅니다. base 브랜치가 본인 아이디인지 꼭 확인하세요.\n\n우측 화면의 버튼으로 바로 PR보낼 수 있습니다.",
     lang: "bash",
     codes: [],
     content: {
