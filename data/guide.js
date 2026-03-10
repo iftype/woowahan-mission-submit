@@ -3,8 +3,8 @@ export const GUIDE_DATA = [
     step: 0,
     mission: ["step1", "step2"],
     title: "우아한 테크코스\n미션 제출 가이드",
-    desc: "순서대로 진행하여 미션 제출을 편하게 해보세요.\n 우측 화면에 나오는 버튼을 눌러 편하게 실행해보세요\n\n화면 상단 입력칸에 아이디와 레포 주소 입력시 버튼과 연동됩니다",
-    helper: "아래로 내려가며 제출 과정을 확인하세요",
+    desc: "화면 상단 해당하는 STEP을 고르시고,\n우측 화면에 나오는 버튼을 눌러 편하게 실행해보세요\n\n아이디와 레포 주소 입력시 버튼과 연동됩니다",
+    helper: "아래로 내려가며 {STEP} 제출 과정을 확인하세요",
     content: {
       type: "image",
       src: "./assets/images/planet-coding.gif",

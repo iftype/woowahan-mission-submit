@@ -83,7 +83,7 @@ function renderContentBody(content) {
   `;
 }
 
-async function intro(card, title, desc) {
+async function intro({ card, title, desc, helper }) {
   card.classList.add("card-intro");
 
   card.innerHTML = `
@@ -98,7 +98,7 @@ async function intro(card, title, desc) {
           </p>
           <div class="card-intro-helper">
             <span class="card-intro-arrow">↓</span>
-            아래로 스크롤하여 과정을 확인하세요
+            ${replacePlaceholders(helper)}
           </div>
         </div>
       `;
@@ -149,7 +149,8 @@ export const CardComponent = {
     }
 
     if (step === 0) {
-      await intro(card, title, desc);
+      const { title, desc, helper } = guide;
+      await intro({ card, title, desc, helper });
     }
     const mobileContent = card.querySelector(".card-mobile-content");
     renderMobileContent(content, mobileContent);
