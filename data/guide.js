@@ -185,6 +185,11 @@ export const GUIDE_DATA = [
       background: "rgba(255, 171, 68, 0.71)",
       action: { text: "live Share 설치하기", url: "vscode:extension/MS-vsliveshare.vsliveshare" },
     },
+    alert: {
+      kind: "warning",
+      title: "WARNING",
+      message: "우측 Live Share 버튼은 VSCode의 Extension이기 때문에 데스크탑 환경에서만 설치가능합니다",
+    },
   },
   {
     step: 10,
