@@ -246,7 +246,7 @@ export const GUIDE_DATA = [
     title: "{B} 저장소에서 커밋 가져오기",
     mission: ["step1"],
 
-    desc: "작업이 {B}의 저장소에서 진행됐다면 {A}는 {B}의 저장소를 remote로 추가한 뒤 해당 브랜치를 가져옵니다.",
+    desc: "작업이 {B}의 저장소에서 진행됐다면 {A}은 {B}의 저장소를 remote로 추가한 뒤 해당 브랜치를 가져옵니다.",
     lang: "bash",
     codes: [
       "git remote add {B} https://github.com/{B}/{REPO_NAME}.git",
@@ -270,7 +270,7 @@ export const GUIDE_DATA = [
     title: "{A} - 본인 저장소에 푸시",
     mission: ["step1"],
 
-    desc: "{A}는 가져온 코드를 본인 포크 저장소에 푸시합니다.",
+    desc: "{A}은 가져온 코드를 본인 포크 저장소에 푸시합니다.",
     lang: "bash",
     codes: ["git push origin {STEP}"],
     content: {
