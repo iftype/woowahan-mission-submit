@@ -395,6 +395,8 @@ select {
   }
 
   .card-title {
+    white-space: pre-line;
+
     font-size: 1.5rem;
     font-weight: 700;
     color: #f1f5f9;

@@ -31,7 +31,7 @@ export const GUIDE_DATA = [
   {
     step: 2,
     mission: ["step2"],
-    title: "작업 전 상황1,로컬 레포를 지워버렸어요!!",
+    title: "작업 전 상황1\n 로컬 레포를 지워버렸어요!!",
     desc: "괜찮습니다! 미션 저장소를 다시 clone한 뒤 원격저장소를 추가하고 최신 변경사항을 가져오세요.",
     lang: "bash",
     codes: [
@@ -58,13 +58,12 @@ export const GUIDE_DATA = [
   },
   {
     step: 3,
-    title: "작업 전 상황2, 최신코드를 동기화 안했어요!",
-
+    title: "작업 전 상황2\n로컬에 있는 브랜치가 upstream과 동기화되지 않았어요!",
     mission: ["step2"],
-    desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
+    desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다.",
     lang: "bash",
     codes: [
-      "git checkout -b {A}",
+      "git checkout -B {A}",
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
       "git fetch origin {A}",
@@ -414,6 +413,11 @@ export const GUIDE_DATA = [
       type: "visual",
       icon: "🔗",
       label: "Sync with Upstream",
+    },
+    alert: {
+      kind: "warning",
+      title: "WARNING",
+      message: "작업 중인 진행 상황이 없는 경우에서만 진행하세요\n작업 중인 진행상황은 stash와 pop을 이용하세요",
     },
   },
   {
