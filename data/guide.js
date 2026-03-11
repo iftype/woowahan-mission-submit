@@ -31,7 +31,7 @@ export const GUIDE_DATA = [
   {
     step: 2,
     mission: ["step2"],
-    title: "작업 전 확인 1,로컬 레포를 지워버렸어요!!",
+    title: "작업 전 상황1,로컬 레포를 지워버렸어요!!",
     desc: "괜찮습니다! 미션 저장소를 다시 clone한 뒤 원격저장소를 추가하고 최신 변경사항을 가져오세요.",
     lang: "bash",
     codes: [
@@ -58,7 +58,7 @@ export const GUIDE_DATA = [
   },
   {
     step: 3,
-    title: "작업 전 확인 2, 최신코드를 동기화 안했어요!",
+    title: "작업 전 상황2, 최신코드를 동기화 안했어요!",
 
     mission: ["step2"],
     desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
