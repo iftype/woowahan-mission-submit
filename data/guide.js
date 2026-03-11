@@ -76,6 +76,11 @@ export const GUIDE_DATA = [
       icon: "🔗",
       label: "Sync with Upstream",
     },
+    alert: {
+      kind: "warning",
+      title: "WARNING",
+      message: "작업 중인 진행 상황이 없는 경우에서만 진행하세요\n작업 중인 진행상황은 stash와 pop을 이용하세요",
+    },
   },
   {
     step: 4,
