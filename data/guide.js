@@ -64,6 +64,7 @@ export const GUIDE_DATA = [
     desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
     lang: "bash",
     codes: [
+      "git checkout -b {A}",
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
       "git fetch origin {A}",
