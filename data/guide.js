@@ -30,45 +30,8 @@ export const GUIDE_DATA = [
   },
   {
     step: 2,
-    title: "각 미션별 리뷰 요청 마감 일정",
-    mission: ["step1"],
-    desc: `1단계(페어): 목요일 오후 6시(세 번째 미션은 금 6시)
-    2단계 : 다음 주 월요일 6시
-  
-    `,
-    lang: "bash",
-    codes: [],
-    content: {
-      type: "image",
-      src: "./assets/images/review-plan.png",
-      background: "rgba(31, 105, 105, 0.39)",
-      imageSize: "width:90%;height:400px",
-    },
-    alert: {
-      kind: "warning",
-      title: "WARNING",
-      message: "마감 시한은 PR을 만든 시간이 아니라 'LMS에서 리뷰어에게 리뷰 요청을 보낸 시간'",
-    },
-  },
-  {
-    step: 3,
-    title: "미션 시작",
-    mission: ["step1"],
-    desc: `강의관리시스템에 로그인 후 미션으로 이동해 미션 시작 버튼을 클릭합니다.
-    저장소에 본인 GitHub 아이디의 브랜치가 생성됩니다.`,
-    lang: "bash",
-    codes: [],
-    content: {
-      type: "image",
-      src: "./assets/images/step-1-mission-start.png",
-      background: "rgba(31, 105, 105, 0.39)",
-      imageSize: "width:80%;height:70%",
-    },
-  },
-  {
-    step: 4,
     mission: ["step2"],
-    title: "작업하던 레포를 지워버렸어요!!",
+    title: "작업 전 확인 1,로컬 레포를 지워버렸어요!!",
     desc: "괜찮습니다! 미션 저장소를 다시 clone한 뒤 원격저장소를 추가하고 최신 변경사항을 가져오세요.",
     lang: "bash",
     codes: [
@@ -94,7 +57,64 @@ export const GUIDE_DATA = [
     },
   },
   {
+    step: 3,
+    title: "작업 전 확인 2, 최신코드를 동기화 안했어요!",
+
+    mission: ["step2"],
+    desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
+    lang: "bash",
+    codes: [
+      "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
+      "git fetch upstream {A}",
+      "git fetch origin {A}",
+      "git rebase upstream/{A}",
+    ],
+    content: {
+      background: "rgba(2, 170, 75, 0.48)",
+      type: "visual",
+      icon: "🔗",
+      label: "Sync with Upstream",
+    },
+  },
+  {
+    step: 4,
+    title: "각 미션별 리뷰 요청 마감 일정",
+    mission: ["step1"],
+    desc: `1단계(페어): 목요일 오후 6시(세 번째 미션은 금 6시)
+    2단계 : 다음 주 월요일 6시
+  
+    `,
+    lang: "bash",
+    codes: [],
+    content: {
+      type: "image",
+      src: "./assets/images/review-plan.png",
+      background: "rgba(31, 105, 105, 0.39)",
+      imageSize: "width:90%;height:400px",
+    },
+    alert: {
+      kind: "warning",
+      title: "WARNING",
+      message: "마감 시한은 PR을 만든 시간이 아니라 'LMS에서 리뷰어에게 리뷰 요청을 보낸 시간'",
+    },
+  },
+  {
     step: 5,
+    title: "미션 시작",
+    mission: ["step1"],
+    desc: `강의관리시스템에 로그인 후 미션으로 이동해 미션 시작 버튼을 클릭합니다.
+    저장소에 본인 GitHub 아이디의 브랜치가 생성됩니다.`,
+    lang: "bash",
+    codes: [],
+    content: {
+      type: "image",
+      src: "./assets/images/step-1-mission-start.png",
+      background: "rgba(31, 105, 105, 0.39)",
+      imageSize: "width:80%;height:70%",
+    },
+  },
+  {
+    step: 6,
     mission: ["step2"],
     title: "다음 미션 브랜치 생성",
     desc: "작업하던 로컬 저장소로 이동 후 변경 사항이 있는지 체크하고, {STEP} 미션을 위한 새로운 브랜치(step2)를 생성합니다.",
@@ -113,7 +133,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 6,
+    step: 7,
     mission: ["step1"],
     title: "저장소 포크",
     desc: "woowacourse 저장소에 직접 코드를 추가할 권한이 없기 때문에 본인 계정으로 포크합니다.\n\n상단 입력창에서 레포 URL을 입력하면 우측 화면의 버튼들로 진행이 가능해집니다",
@@ -133,7 +153,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 7,
+    step: 8,
     title: "포크한 저장소 클론",
     mission: ["step1"],
     desc: "포크해온 저장소를 클론하고 원격저장소로 추가합니다",
@@ -152,7 +172,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 8,
+    step: 9,
     mission: ["step1"],
     title: "기능 구현 브랜치 생성",
     desc: "기능 구현을 위한 브랜치를 생성합니다.",
@@ -171,7 +191,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 9,
+    step: 10,
     mission: ["step1"],
     title: "페어 프로그래밍",
     desc: `짝과 함께 한 사람의 저장소에서 작업합니다.\n
@@ -192,7 +212,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 10,
+    step: 11,
     title: "기능 구현 후 커밋",
     mission: ["step1", "step2"],
     desc: "미션 요구사항을 파악해 기능을 구현한 후 add, commit 합니다.",
@@ -206,7 +226,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 11,
+    step: 12,
     title: "원격 저장소에 푸시",
     mission: ["step1", "step2"],
 
@@ -226,7 +246,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 12,
+    step: 13,
     title: "팀 피드백 및 헤어지기",
     mission: ["step1"],
 
@@ -242,7 +262,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 13,
+    step: 14,
     title: "{B} 저장소에서 커밋 가져오기",
     mission: ["step1"],
 
@@ -266,7 +286,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 14,
+    step: 15,
     title: "{A} - 본인 저장소에 푸시",
     mission: ["step1"],
 
@@ -281,7 +301,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 15,
+    step: 16,
     title: "PR 보내기",
     mission: ["step1", "step2"],
 
@@ -305,7 +325,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 16,
+    step: 17,
     title: "리뷰 요청",
     mission: ["step1", "step2"],
 
@@ -321,7 +341,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 17,
+    step: 18,
     title: "피드백 반영 후 push",
     mission: ["step1", "step2"],
 
@@ -341,7 +361,7 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 18,
+    step: 19,
     title: "merge 후 브랜치 정리",
     mission: ["step1", "step2"],
 
@@ -356,10 +376,10 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 19,
+    step: 20,
     title: "upstream 추가 및 동기화",
 
-    mission: ["step1", "step2"],
+    mission: ["step1"],
     desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
     lang: "bash",
     codes: [
@@ -376,7 +396,22 @@ export const GUIDE_DATA = [
     },
   },
   {
-    step: 20,
+    step: 21,
+    title: "upstream 동기화",
+
+    mission: ["step2"],
+    desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
+    lang: "bash",
+    codes: ["git fetch upstream {A}", "git fetch origin {A}", "git rebase upstream/{A}"],
+    content: {
+      background: "rgba(2, 170, 75, 0.48)",
+      type: "visual",
+      icon: "🔗",
+      label: "Sync with Upstream",
+    },
+  },
+  {
+    step: 22,
     mission: ["step1", "step2"],
     title: "우테코 미션 제출 관련 링크들",
     desc: "미션 관련 링크입니다",
