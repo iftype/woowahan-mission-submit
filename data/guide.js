@@ -40,8 +40,7 @@ export const GUIDE_DATA = [
       "",
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
-      "git fetch origin {A}",
-      "git reset --hard upstream/{A}",
+      "git rebase upstream/{A}",
     ],
     content: {
       type: "image",
@@ -53,21 +52,25 @@ export const GUIDE_DATA = [
       kind: "note",
       title: "NOTE",
       message:
-        "upstream에 올라간 내 브랜치를 가져와 작업합니다.\n 원격저장소애 {A}브랜치가 없을 경우 최근 작업한 브랜치로 받아와주세요",
+        "upstream에 올라간 내 브랜치를 가져와 작업합니다.\n 원격저장소에 {A} 브랜치가 없을 경우 최근 작업한 브랜치로 받아와주세요",
     },
   },
   {
     step: 3,
     title: "작업 전 상황2\n로컬에 있는 브랜치가 upstream과 동기화되지 않았어요!",
     mission: ["step2"],
-    desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다.",
+    desc: "로컬 {A} 브랜치에 남아 있는 작업 내용 때문에 upstream/{A} rebase 시 충돌이 날 수 있습니다. 작업 중인 내용이 없다면 로컬 브랜치를 정리한 뒤 upstream 기준으로 다시 동기화합니다.",
     lang: "bash",
     codes: [
-      "git checkout -B {A}",
+      "git checkout {A}",
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
+      "# upstream이 이미 있거나 URL을 수정하려면 아래 명령을 사용하세요",
+      "# git remote set-url upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
+      "",
       "git fetch upstream {A}",
-      "git fetch origin {A}",
-      "git reset --hard upstream/{A}",
+      "# step 브랜치 정리하려면",
+      "# git branch -D step1",
+      "git rebase upstream/{A}",
     ],
     content: {
       background: "rgba(2, 170, 75, 0.48)",
@@ -78,7 +81,8 @@ export const GUIDE_DATA = [
     alert: {
       kind: "warning",
       title: "WARNING",
-      message: "작업 중인 진행 상황이 없는 경우에서만 진행하세요\n작업 중인 진행상황은 stash와 pop을 이용하세요",
+      message:
+        "로컬 {A} 브랜치를 확인하세요!\n로컬 브랜치에 커밋이나 변경 사항이 남아 있으면 rebase 과정에서 충돌이 날 수 있습니다.",
     },
   },
   {
@@ -163,7 +167,11 @@ export const GUIDE_DATA = [
     mission: ["step1"],
     desc: "포크해온 저장소를 클론하고 원격저장소로 추가합니다",
     lang: "bash",
-    codes: ["git clone -b {A} --single-branch https://github.com/{A}/{REPO_NAME}", "cd {REPO_NAME}"],
+    codes: [
+      "git clone -b {A} --single-branch https://github.com/{A}/{REPO_NAME}.git",
+      "cd {REPO_NAME}",
+      "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
+    ],
     content: {
       type: "visual",
       icon: "💻",
@@ -173,7 +181,8 @@ export const GUIDE_DATA = [
     alert: {
       kind: "note",
       title: "NOTE",
-      message: "--single-branch로 브랜치 하나만을 가져옵니다",
+      message:
+        "포크할 때 'Copy the main branch only'를 체크하지 않는 것을 권장합니다.\n체크해서 {A} 브랜치가 없다면 전체 저장소를 다시 clone 하거나, upstream/{A} 브랜치를 fetch한 뒤 체크아웃하세요.",
     },
   },
   {
@@ -287,7 +296,8 @@ export const GUIDE_DATA = [
     alert: {
       kind: "note",
       title: "NOTE",
-      message: "remote 이름 origin - 내 저장소, upstream - 원본 저장소",
+      message:
+        "로컬에 step1 브랜치가 없거나 작업이 없는 경우에만 진행하세요.\n이미 step1 브랜치에 작업이 있다면 {B} 의 코드를 merge 해야 합니다.",
     },
   },
   {
@@ -302,7 +312,7 @@ export const GUIDE_DATA = [
       type: "visual",
       icon: "🚀",
       background: "rgba(140, 161, 255, 0.71)",
-      label: "B Pushes to Own Remote",
+      label: "A Pushes to Own Remote",
     },
   },
   {
@@ -390,8 +400,7 @@ export const GUIDE_DATA = [
     codes: [
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
-      "git fetch origin {A}",
-      "git reset --hard upstream/{A}",
+      "git rebase upstream/{A}",
     ],
     content: {
       background: "rgba(2, 170, 75, 0.48)",
@@ -405,9 +414,9 @@ export const GUIDE_DATA = [
     title: "upstream 동기화",
 
     mission: ["step2"],
-    desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
+    desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. ",
     lang: "bash",
-    codes: ["git fetch upstream {A}", "git fetch origin {A}", "git reset --hard upstream/{A}"],
+    codes: ["git fetch upstream {A}", "git rebase upstream/{A}"],
     content: {
       background: "rgba(2, 170, 75, 0.48)",
       type: "visual",
