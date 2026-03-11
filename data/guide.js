@@ -57,9 +57,9 @@ export const GUIDE_DATA = [
   },
   {
     step: 3,
-    title: "작업 전 상황2\n로컬에 있는 브랜치가 upstream과 동기화되지 않았어요!",
+    title: "작업 전 상황2\nstep1끝나고 rebase를 안했어요!",
     mission: ["step2"],
-    desc: "로컬 {A} 브랜치에 남아 있는 작업 내용 때문에 upstream/{A} rebase 시 충돌이 날 수 있습니다. 작업 중인 내용이 없다면 로컬 브랜치를 정리한 뒤 upstream 기준으로 다시 동기화합니다.",
+    desc: "로컬 {A} 브랜치에 남아 있는 작업 내용 때문에 rebase 시 충돌이 날 수 있습니다. 작업 중인 내용이 없다면 로컬 브랜치를 정리한 뒤 upstream 기준으로 {A} 브랜치를 동기화합니다.",
     lang: "bash",
     codes: [
       "git checkout {A}",
@@ -145,9 +145,16 @@ export const GUIDE_DATA = [
     step: 7,
     mission: ["step1"],
     title: "저장소 포크",
-    desc: "woowacourse 저장소에 직접 코드를 추가할 권한이 없기 때문에 본인 계정으로 포크합니다.\n\n상단 입력창에서 레포 URL을 입력하면 우측 화면의 버튼들로 진행이 가능해집니다",
+    desc: "woowacourse 저장소에 직접 코드를 추가할 권한이 없기 때문에 본인 계정으로 포크합니다.\n상단 입력창에서 레포 URL을 입력하면 우측 화면의 버튼들로 진행이 가능해집니다\n\n포크할 때 'Copy the main branch only'를 체크해서 {A} 브랜치가 없다면 아래 명렁어를 사용해 upstream의 {A} 브랜치를 가져오고, 동기화하세요.",
     lang: "bash",
-    codes: [],
+    codes: [
+      "#master branch only를 누른 경우 아래의 명령어를 실행해주세요",
+      "git clone https://github.com/{A}/{REPO_NAME}",
+      "cd {REPO_NAME}",
+      "git checkout -b {A}\ngit fetch upstream {A}",
+      "git push origin {A}",
+      "cd ..",
+    ],
     content: {
       type: "visual",
       icon: "🍴",
@@ -158,7 +165,7 @@ export const GUIDE_DATA = [
     alert: {
       kind: "note",
       title: "NOTE",
-      message: "Copy the master branch only는 체크해제하여 브랜치를 받아와주세요.",
+      message: "체크해제한 사람은 밑부터 진행하세요",
     },
   },
   {
@@ -171,6 +178,7 @@ export const GUIDE_DATA = [
       "git clone -b {A} --single-branch https://github.com/{A}/{REPO_NAME}.git",
       "cd {REPO_NAME}",
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
+      "git fetch upstream {A}",
     ],
     content: {
       type: "visual",
@@ -181,8 +189,7 @@ export const GUIDE_DATA = [
     alert: {
       kind: "note",
       title: "NOTE",
-      message:
-        "포크할 때 'Copy the main branch only'를 체크하지 않는 것을 권장합니다.\n체크해서 {A} 브랜치가 없다면 전체 저장소를 다시 clone 하거나, upstream/{A} 브랜치를 fetch한 뒤 체크아웃하세요.",
+      message: "우테코 공식 가이드라인에서 --single-branch를 추천합니다",
     },
   },
   {
@@ -222,7 +229,7 @@ export const GUIDE_DATA = [
     alert: {
       kind: "warning",
       title: "WARNING",
-      message: "우측 Live Share 버튼은 VSCode의 Extension이기 때문에 데스크탑 환경에서만 설치가능합니다",
+      message: "우측 Live Share 버튼은 VSCode의 Extension이기 때문에 데스크탑 환경에서만 설치할 수 있습니다",
     },
   },
   {
