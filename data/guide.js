@@ -41,7 +41,7 @@ export const GUIDE_DATA = [
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
       "git fetch origin {A}",
-      "git rebase upstream/{A}",
+      "git reset --hard upstream/{A}",
     ],
     content: {
       type: "image",
@@ -68,7 +68,7 @@ export const GUIDE_DATA = [
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
       "git fetch origin {A}",
-      "git rebase upstream/{A}",
+      "git reset --hard upstream/{A}",
     ],
     content: {
       background: "rgba(2, 170, 75, 0.48)",
@@ -387,7 +387,7 @@ export const GUIDE_DATA = [
       "git remote add upstream https://github.com/{REPO_OWNER}/{REPO_NAME}.git",
       "git fetch upstream {A}",
       "git fetch origin {A}",
-      "git rebase upstream/{A}",
+      "git reset --hard upstream/{A}",
     ],
     content: {
       background: "rgba(2, 170, 75, 0.48)",
@@ -403,7 +403,7 @@ export const GUIDE_DATA = [
     mission: ["step2"],
     desc: "woowacourse 저장소를 upstream으로 추가하고 최신 코드를 동기화합니다. upstream 추가는 최초 1회만 진행합니다.",
     lang: "bash",
-    codes: ["git fetch upstream {A}", "git fetch origin {A}", "git rebase upstream/{A}"],
+    codes: ["git fetch upstream {A}", "git fetch origin {A}", "git reset --hard upstream/{A}"],
     content: {
       background: "rgba(2, 170, 75, 0.48)",
       type: "visual",
